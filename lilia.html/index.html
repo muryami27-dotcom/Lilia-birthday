@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy-Birthday!</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="screen-start" class="screen">
+    <span class="logo">Лиля.ком</span>
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm1leHJ0MWNvNGtzOXo1bGVmbmh3bTAxNnZnNmhjMDJ2bDd2ZXV6ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/JrebJVT2Vy63YpipDY/giphy.gif" alt="party" class="top-gif">
+    <h2 class="nachalo">ЙОУУ ДРШКА ЛИЛОВОЙ</h2>
+    <h3 class="paragraf">тебе уже 15 лет! Давай посмотрим как ты менялась?</h3>
+    <button class="pyteshestv" onclick="showScreen('screen-gallery')">Йоо, погнали</button>
+    <button id="exit-btn" class="run-button">Выйти</button>
+</div>
+
+<div id="screen-gallery" class="screen hidden">
+    <h2>Ты всегда прекрасна</h2>
+    <video width="300" controls>
+        <source src="video/tvoe_video.mp4" type="video/mp4">
+    </video>
+    <button onclick="showScreen('screen-quiz')">Продолжить</button>
+</div>
+
+<div id="screen-quiz" class="screen hidden">
+    <h2>Кто самая очаровательная кисуля?</h2>
+    <div class="quiz-buttons">
+        <button onclick="showScreen('screen-final')">яя</button>
+        <button id="hz-btn" class="run-button">хз</button>
+    </div>
+</div>
+
+<div id="screen-final" class="screen hidden">
+    <h1>С ДНЕМ РОЖДЕНИЯ, ЛИЛЯ! 🎉</h1>
+    <p>Тут твой финальный текст и поздравление...</p>
+</div>
+
+<script>
+    function showScreen(screenId) {
+        // 1. Прячем все экраны
+        const allScreens = document.querySelectorAll('.screen');
+        allScreens.forEach(screen => {
+            screen.classList.add('hidden');
+        });
+
+        // 2. Показываем только тот, который нам нужен
+        const targetScreen = document.getElementById(screenId);
+        targetScreen.classList.remove('hidden');
+    }
+</script>
+</body>
+</html>
