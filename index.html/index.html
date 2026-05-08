@@ -13,28 +13,28 @@
     <h2 class="nachalo">ЙОУУ ДРШКА ЛИЛОВОЙ</h2>
     <h3 class="paragraf">тебе уже 15 лет! Давай посмотрим как ты менялась?</h3>
     <button class="pyteshestv" onclick="showScreen('screen-gallery')">Йоо, погнали</button>
-    <button id="exit-btn" class="run-button">Выйти</button>
+    <button class="runaway-btn btn-pos-1">Выйти</button>
 </div>
 
 <div id="screen-gallery" class="screen hidden">
-    <h2>Ты всегда прекрасна</h2>
-    <video width="300" controls>
+    <h1 class="prekrasna">Ты всегда прекрасна, в любой момент!</h1>
+    <video class="vidos" width="300" controls>
         <source src="video/tvoe_video.mp4" type="video/mp4">
     </video>
-    <button onclick="showScreen('screen-quiz')">Продолжить</button>
+    <button class="proda" onclick="showScreen('screen-quiz')">Продолжить</button>
 </div>
 
 <div id="screen-quiz" class="screen hidden">
-    <h2>Кто самая очаровательная кисуля?</h2>
+    <h1 class="kisya">Кто самая очаровательная кисуля?</h1>
     <div class="quiz-buttons">
-        <button onclick="showScreen('screen-final')">яя</button>
-        <button id="hz-btn" class="run-button">хз</button>
+        <button class="yaa" onclick="showScreen('screen-final')">яя</button>
+        <button class="runaway-btn btn-pos-2">хз</button>
     </div>
 </div>
 
 <div id="screen-final" class="screen hidden">
-    <h1>С ДНЕМ РОЖДЕНИЯ, ЛИЛЯ! 🎉</h1>
-    <p>Тут твой финальный текст и поздравление...</p>
+    <h1 class="dr">С ДНЕМ РОЖДЕНИЯ, ЛИЛЯЯ! 🎉</h1>
+    <p class="pozdrava">С днём рождения Лиловая! Тебе уже 15 лет, и ты уже достигла возраста, при котором можно устроиться на легкую работу официально, с разрешения родителей, так-же с 15-ти лет у тебя полная ответственность за свои поступки, и многое другое! 15 лет — этап вступления во взрослую жизнь, на тебя падет больше ответственности и обязанностей, но в то-же время больше возможностей! Желаю тебе в этом году больше денег, ведь знаю что у тебя много хотелок, желаю что бы ты смогла самореализоваться, больше отдыхать, крепких нервов, с твоими братьями особенно. Так-же желаю здоровья по-больше и счастливых моментов что-бы у тебя было все пучком, и надеюсь, после твоего переезда мы сможем чаще болтать, в том-же дискорде! Еще надеюсь, и желаю тебе от всего сердца найти ХОРОШЕГО парня (не как обычно, пожалуйста), желательно в реальной жизни, что бы тебя на руках носил, другого не одобрю. В общем, я тебя очень люблю и ценю, ты хорошая подруга, надеюсь ты проведешь свое день рождение прекрасным образом! С днём рождения, любима долбебка :33</p>
 </div>
 
 <script>
@@ -49,6 +49,23 @@
         const targetScreen = document.getElementById(screenId);
         targetScreen.classList.remove('hidden');
     }
+</script>
+
+<script>
+    // Ищем все кнопки с классом runaway-btn
+    const buttons = document.querySelectorAll('.runaway-btn');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseover', function() {
+            // Рассчитываем случайные координаты
+            const x = Math.random() * (document.documentElement.scrollHeight - btn.clientWidth);
+            const y = Math.random() * (document.documentElement.scrollHeight - btn.clientHeight);
+
+            // Двигаем кнопку
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        });
+    });
 </script>
 </body>
 </html>

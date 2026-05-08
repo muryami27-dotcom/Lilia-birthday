@@ -95,7 +95,7 @@ p {
     margin-top: 10px;
 }
 button {
-    margin: 1px;
+    margin: 4px;
 }
 
 div .pyteshestv {
@@ -106,6 +106,9 @@ div .pyteshestv {
     animation: movePytesh 5s ease infinite;
     cursor: pointer;
     transition: 0.3s;
+    padding: 5px 15px;
+    font-size: 15px;
+    margin-top: 10px;
 }
 
 @keyframes movePytesh {
@@ -119,7 +122,7 @@ div .pyteshestv:hover {
     box-shadow: 0 0 20px #932f64;
 }
 
-div .run-button {
+div .runaway-btn {
     border: none;
     border-radius: 50px;
     background: linear-gradient(270deg, #ce4f40, #ce4072, #ce40a1, #7b4b7c);
@@ -127,6 +130,8 @@ div .run-button {
     animation: moveRunbtn 5s ease infinite;
     cursor: pointer;
     transition: 0.3s;
+    padding: 5px 15px;
+    font-size: 15px
 }
 
 @keyframes moveRunbtn {
@@ -135,7 +140,7 @@ div .run-button {
     100% { background-position: 0% 50%; }
 }
 
-div .run-button:hover {
+div .runaway-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px #932f64;
 }
@@ -144,4 +149,154 @@ div .run-button:hover {
     width: 60px;
     position: relative;
     right: -220px;
+}
+
+div .prekrasna {
+    color: #ce5d40;
+    font-weight: 700;
+    font-size: large;
+    position: absolute;
+    top: 112px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-size: 27px;
+}
+
+div .prekrasna:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #f9b1e1;
+}
+
+div .vidos {
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+div .vidos:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #f9b1e1;
+}
+
+div .proda {
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(270deg, #ce4f40, #ce4072, #ce40a1, #7b4b7c);
+    background-size: 800% 800%;
+    animation: moveProda 5s ease infinite;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+    bottom: 90px;
+    padding: 15px 30px;
+    font-size: 15px;
+}
+
+@keyframes moveProda {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+div .proda:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #932f64;
+}
+
+div .kisya {
+    background: linear-gradient(270deg, #cf4fc4, #c40e6f, #e34f74, #ffcc00);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: moveKisya 5s ease infinite;
+    font-weight: bold;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    border-radius: 10px;
+}
+
+@keyframes moveKisya {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+div .kisya:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #f9b1e1;
+}
+
+div .yaa {
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(270deg, #ce4f40, #ce4072, #ce40a1, #7b4b7c);
+    background-size: 800% 800%;
+    animation: moveYaa 5s ease infinite;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 5px 15px;
+    font-size: 15px
+}
+
+@keyframes moveYaa {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+div .yaa:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #932f64;
+}
+
+div .dr {
+    background: linear-gradient(270deg, #cf4fc4, #c40e6f, #e34f74, #ffcc00);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: moveDr 5s ease infinite;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+@keyframes moveDr {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+div .pozdrava {
+    color: #9a1857;
+    font-size: 27px;
+    text-shadow: 2px 2px 4px rgb(73, 44, 58);
+}
+
+/* Общие стили для всех убегающих кнопок */
+.runaway-btn {
+    position: absolute;
+    z-index: 999;
+    padding: 10px 20px;
+    /* Тут твои тени, цвета и прочее */
+}
+
+/* Индивидуальное положение для первой */
+.btn-pos-1 {
+    top: 69%;
+    left: 46.4%;
+}
+
+/* Индивидуальное положение для второй */
+.btn-pos-2 {
+    top: 52.8%;
+    left: 52%;
 }
