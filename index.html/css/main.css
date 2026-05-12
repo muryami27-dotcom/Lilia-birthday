@@ -300,3 +300,27 @@ div .pozdrava {
     top: 52.8%;
     left: 52%;
 }
+
+@media (max-width: 600px) {
+    body > div, [class*="screen"], [class*="screen hidden"] {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        min-height: 100vh !important;
+        width: 100% !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+        overflow: hidden;
+    }
+    
+    div img {
+        max-width: 80% !important;
+        height: auto !important;
+    }
+
+    h1, h2 {
+        word-wrap: break-word;
+        font-size: 1.5rem !important;
+    }
+}
