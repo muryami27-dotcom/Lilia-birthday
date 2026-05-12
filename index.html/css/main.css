@@ -302,48 +302,26 @@ div .pozdrava {
 }
 
 @media (max-width: 600px) {
-    html, body {
-        overflow: hidden !important;
-        height: 100%;
-        position: fixed;
+    html, body { 
+        overflow: hidden !important; 
+        height: 100%; 
+        position: fixed; 
     }
-
     .screen {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important;
+        justify-content: space-around !important;
         align-items: center !important;
-        text-align: center;
-        height: 100dvh !important;
-        width: 100vw !important;
-        padding: 40px 20px !important;
-        box-sizing: border-box !important;
+        padding: 20px !important;
+        height: 100vh !important;
     }
-    
-    .screen.hidden {
-        display: none !important;
-    }
-
-    .screen img {
-        width: auto !important;
-        max-height: 35% !important;
-    }
-
-    h1 {
-        word-wrap: break-word;
-        font-size: 22px !important;
-        line-height: 1.2 !important;
-    }
-    p, .pozdrava {
-        font-size: 22px !important;
-        margin: 10px 0 !important;
-    }
-
-    button {
-        width: 100% !important;
-        max-width: 250px;
-        padding: 12px !important;
-        font-size: 16px !important;
-        flex-shrink: 0;
+    .screen.hidden { display: none !important; }
+    h1 { font-size: 20px !important; }
+    p, .congratulation-text { font-size: 14px !important; }
+    img { max-height: 30% !important; width: auto !important; }
+    button { 
+        padding: 10px 20px !important; 
+        font-size: 16px !important; 
+        min-height: 44px; /* Чтобы палец попадал */
     }
 }
