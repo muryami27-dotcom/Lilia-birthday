@@ -291,7 +291,7 @@ div .pozdrava {
 
 /* Индивидуальное положение для первой */
 .btn-pos-1 {
-    top: 64%;
+    top: 67%;
     left: 46.4%;
 }
 
@@ -386,7 +386,7 @@ div .pozdrava {
         position: absolute !important;
         left: 20vw !important;
         top: 10vh !important;
-        width: 50px;
+        width: 30px;
     }
     
     .kisya {
