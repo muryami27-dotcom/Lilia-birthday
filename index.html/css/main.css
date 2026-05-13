@@ -1,14 +1,13 @@
-/* Базовый стиль для всех экранов */
+
 .screen {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Растягиваем на весь экран телефона/компа */
+    height: 100vh; 
     text-align: center;
 }
 
-/* Этот класс будет прятать экран */
 .hidden {
     display: none !important;
 }
@@ -292,7 +291,7 @@ div .pozdrava {
 
 /* Индивидуальное положение для первой */
 .btn-pos-1 {
-    top: 69%;
+    top: 62%;
     left: 46.4%;
 }
 
@@ -336,9 +335,9 @@ div .pozdrava {
         transition: transform 0.2s ease !important;
         touch-action: none;
         margin: 0 !important;
-        left: 0 !important;
-        top: 0 !important;
-        transform: none;
+       /* left: 0 !important;
+        right: 0 !important;*/
+       /* transform: none; */
     }
 
     * {
@@ -347,13 +346,13 @@ div .pozdrava {
 
     .prekrasna {
         position: absolute !important;
-        top: 23vh !important;
+        top: 9vh !important;
         padding: 10px 15px !important;
     }
 
     .proda {
         position: absolute !important;
-        bottom: 23vh !important;
+        bottom: 10vh !important;
     }
 
     .yaa {
@@ -364,20 +363,46 @@ div .pozdrava {
 
     .btn-pos-2 {
         position: fixed !important;
-        left: 49vw !important;
-        top: 52vh !important;
-    }
+        left: 60% !important;
+        bottom: 205px !important;
+        transform: translateX( -40% );
+        margin: 0 !important;
+        top: auto !important;
+        height: auto !important;
+        width: fit-content !important;
+    } 
 
     .btn-pos-1 {
         position: fixed !important;
-        top: 94vw !important;
-        left: 30vh !important;
-    }
+        bottom: 190px ;
+        margin: 0 !important;
+        top: auto !important;
+        left: 50% ;
+       /* margin-top: 100px !important; */
+        transform: translateX( -50% ) ; 
+    } 
 
     .top-gif {
         position: absolute !important;
         left: 20vw !important;
+        top: 23vh !important;
+    }
+    
+    .kisya {
+        position: absolute !important;
+        top: 45vh !important;
     }
 
-    
+    .nachalo {
+        position: absolute !important;
+        font-size: 25px !important;
+        top: 30vh !important;
+    }
+
+    .paragraf {
+        position: absolute !important;
+        font-size: 17px;
+        top: 37vh !important;
+    }
+
 }
