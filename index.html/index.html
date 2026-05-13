@@ -55,16 +55,39 @@
     // Ищем все кнопки с классом runaway-btn
     const buttons = document.querySelectorAll('.runaway-btn');
 
-    buttons.forEach(btn => {
-        btn.addEventListener('mouseover', function() {
-            // Рассчитываем случайные координаты
-            const x = Math.random() * (document.documentElement.scrollHeight - btn.clientWidth);
-            const y = Math.random() * (document.documentElement.scrollHeight - btn.clientHeight);
+    function moveButton(btn) {
 
-            // Двигаем кнопку
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        });
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+        const padding = 20;
+
+        let maxWidth = vw - btn.offsetWidth - padding;
+        let maxHeight = vh - btn.offsetHeight - padding;
+        
+        let x = Math.random() * maxWidth;
+        let y = Math.random() * maxHeight;
+
+        x = Math.max(padding, Math.min(x, maxWidth));
+        y = Math.max(padding, Math.min(y, maxHeight));
+
+        btn.style.position = 'fixed'
+        btn.style.left = '0px'
+        btn.style.top = '0px'
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    buttons.forEach(btn => {
+
+        const handleMove = (e) => {
+            if (e.type === 'touchstart') e.preventDefault();
+            moveButton(btn);
+        };
+
+        btn.addEventListener('mouseover', () => moveButton(btn));
+
+        btn.addEventListener('touchstart', handleMove, { passive: false })
+        btn.addEventListener('click', handleMove);
     });
 </script>
 </body>

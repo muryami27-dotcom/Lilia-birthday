@@ -284,8 +284,9 @@ div .pozdrava {
 /* Общие стили для всех убегающих кнопок */
 .runaway-btn {
     position: absolute;
-    z-index: 999;
+    z-index: 10000;
     padding: 10px 20px;
+    transition: all 0.2s ease;
     /* Тут твои тени, цвета и прочее */
 }
 
@@ -304,24 +305,81 @@ div .pozdrava {
 @media (max-width: 600px) {
     html, body { 
         overflow: hidden !important; 
-        height: 100%; 
-        position: fixed; 
+        height: 100% !important; 
+        position: relative !important;
     }
     .screen {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-around !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+        justify-content: center !important;
         align-items: center !important;
         padding: 20px !important;
         height: 100vh !important;
+        width: auto !important;
+        position: relative !important;
     }
     .screen.hidden { display: none !important; }
     h1 { font-size: 20px !important; }
-    p, .congratulation-text { font-size: 14px !important; }
+    p, .pozdrava { font-size: 14px !important; }
     img { max-height: 30% !important; width: auto !important; }
     button { 
-        padding: 10px 20px !important; 
+        padding: 10px 10px !important; 
         font-size: 16px !important; 
-        min-height: 44px; /* Чтобы палец попадал */
+        min-height: 30px !important; 
+    }
+
+    .runaway-btn {
+        position: fixed !important;
+        z-index: 10000 !important;
+        transition: transform 0.2s ease !important;
+        touch-action: none;
+        margin: 0 !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none;
+    }
+
+    * {
+        box-sizing: border-box !important;
+    }
+
+    .prekrasna {
+        position: absolute !important;
+        top: 23vh !important;
+        padding: 10px 15px !important;
+    }
+
+    .proda {
+        position: absolute !important;
+        bottom: 23vh !important;
+    }
+
+    .yaa {
+        position: absolute !important;
+        left: 40vw !important;
+        top: 52vh !important;
+    }
+
+    .btn-pos-2 {
+        position: fixed !important;
+        left: 49vw !important;
+        top: 52vh !important;
+    }
+
+    .btn-pos-1 {
+        position: fixed !important;
+        top: 94vw !important;
+        left: 30vh !important;
+    }
+
+    .top-gif {
+        position: absolute !important;
+        left: 20vw !important;
+    }
+
+    * {
+        outline: 1px solid red !important;
     }
 }
