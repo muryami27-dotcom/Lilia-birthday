@@ -379,7 +379,5 @@ div .pozdrava {
         left: 20vw !important;
     }
 
-    * {
-        outline: 1px solid red !important;
-    }
+    
 }
