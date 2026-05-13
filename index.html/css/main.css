@@ -385,7 +385,8 @@ div .pozdrava {
     .top-gif {
         position: absolute !important;
         left: 20vw !important;
-        top: 23vh !important;
+        top: 20vh !important;
+        width: 50px;
     }
     
     .kisya {
