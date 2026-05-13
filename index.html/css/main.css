@@ -291,7 +291,7 @@ div .pozdrava {
 
 /* Индивидуальное положение для первой */
 .btn-pos-1 {
-    top: 62%;
+    top: 64%;
     left: 46.4%;
 }
 
@@ -385,7 +385,7 @@ div .pozdrava {
     .top-gif {
         position: absolute !important;
         left: 20vw !important;
-        top: 20vh !important;
+        top: 10vh !important;
         width: 50px;
     }
     
