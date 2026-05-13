@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy-Birthday!</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div id="screen-start" class="screen">
@@ -48,6 +49,18 @@
         // 2. Показываем только тот, который нам нужен
         const targetScreen = document.getElementById(screenId);
         targetScreen.classList.remove('hidden');
+
+        document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+        document.getElementById(screenId).classList.remove('hidden');
+
+        if (screenId ==='screen-final') {
+            confetti({
+                particleCount: 200,
+                spread: 90,
+                origin: { y: 1},
+                colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
+            });
+        }
     }
 </script>
 
@@ -55,6 +68,9 @@
     const buttons = document.querySelectorAll('.runaway-btn');
 
     function moveButton(btn) {
+
+        document.getElementById('click-sound').play();
+
         btn.style.setProperty('bottom', 'auto', 'important');
         btn.style.setProperty('left', '0px', 'important');
         btn.style.setProperty('top', '0px', 'important');
@@ -79,5 +95,7 @@
         btn.addEventListener('click', handleMove);
     });
 </script>
+
+<audio id="click-sound" src="sounds/click.mp3" preload="auto"></audio>
 </body>
 </html>
