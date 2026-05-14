@@ -280,22 +280,18 @@ div .pozdrava {
     text-shadow: 2px 2px 4px rgb(73, 44, 58);
 }
 
-/* Общие стили для всех убегающих кнопок */
 .runaway-btn {
     position: absolute;
     z-index: 10000;
     padding: 10px 20px;
     transition: all 0.2s ease;
-    /* Тут твои тени, цвета и прочее */
 }
 
-/* Индивидуальное положение для первой */
 .btn-pos-1 {
     top: 69%;
     left: 46.4%;
 }
 
-/* Индивидуальное положение для второй */
 .btn-pos-2 {
     top: 52.8%;
     left: 52%;

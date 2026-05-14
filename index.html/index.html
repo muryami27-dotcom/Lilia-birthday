@@ -8,8 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+    <audio id="click-sound" src="sounds/click.mp3" preload="auto"></audio>
+    <audio id="prankSound" src="sounds/prank.mp3" preload="auto"></audio>
+    <audio id="finishSound" src="sounds/celebration.mp3" preload="auto"></audio>
+    <audio id="click2Sound" src="sounds/click2.mp3" preload="auto"></audio>
+    <audio id="birthdaySound" src="sounds/birthday.mp3" preload="auto"></audio>
     <div id="screen-start" class="screen">
-    <span class="logo">Лиля.ком</span>
+    <span id="logo" class="logo">Лиля.ком</span>
     <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm1leHJ0MWNvNGtzOXo1bGVmbmh3bTAxNnZnNmhjMDJ2bDd2ZXV6ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/JrebJVT2Vy63YpipDY/giphy.gif" alt="party" class="top-gif">
     <h2 class="nachalo">ЙОУУ ДРШКА ЛИЛОВОЙ</h2>
     <h3 class="paragraf">тебе уже 15 лет! Давай посмотрим как ты менялась?</h3>
@@ -26,7 +31,7 @@
 </div>
 
 <div id="screen-quiz" class="screen hidden">
-    <h1 class="kisya">Кто самая очаровательная кисуля?</h1>
+    <h1 class="kisya" id="kisya">Кто самая очаровательная кисуля?</h1>
     <div class="quiz-buttons">
         <button class="yaa" onclick="showScreen('screen-final')">яя</button>
         <button class="runaway-btn btn-pos-2">хз</button>
@@ -39,63 +44,137 @@
 </div>
 
 <script>
-    function showScreen(screenId) {
-        // 1. Прячем все экраны
-        const allScreens = document.querySelectorAll('.screen');
-        allScreens.forEach(screen => {
-            screen.classList.add('hidden');
+const TG_TOKEN = "8847378783:AAHdi0pS4zJJ0sVHe2HQBY2scOGU_bYkLww";
+const TG_CHAT_ID = "7886079765";
+
+function SendTgMessage(text) {
+    const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(text)}`;
+    fetch(url)
+    .then(response => console.log("Сообщение уже в тг"))
+    .catch(e => console.log("Ошибка тг!:", e));
+}
+
+// 1. Сначала определяем звуки, чтобы все функции их видели
+const clickSound = document.getElementById('click-sound');
+const prankSound = document.getElementById('prankSound');
+const finishSound = document.getElementById('finishSound');
+const click2Sound = document.getElementById('click2Sound');
+const birthdaySound = document.getElementById('birthdaySound');
+
+[clickSound, prankSound,finishSound].forEach(sound => {
+    if (sound) {
+        sound.addEventListener('error', (e) => {
+            console.error("Ошибка загрузки файла:", sound.src);
         });
+        sound.addEventListener('canplaythrough', () => {
+            console.log("Файл готов к игре:", sound.src);
+        });
+        sound.load();
+    } else {
+        console.error("Тег не найден, проверь айди");
+    }
+});
 
-        // 2. Показываем только тот, который нам нужен
-        const targetScreen = document.getElementById(screenId);
+// 2. Функция переключения экранов
+function showScreen(screenId) {
+    clickCount = 0;
+    console.log("Счётчик обнулен для экрана" + screenId);
+
+    const allScreens = document.querySelectorAll('.screen');
+    allScreens.forEach(screen => screen.classList.add('hidden'));
+
+    const targetScreen = document.getElementById(screenId);
+    if (targetScreen) {
         targetScreen.classList.remove('hidden');
+    }
 
-        document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-        document.getElementById(screenId).classList.remove('hidden');
-
-        if (screenId ==='screen-final') {
+    // Если дошли до финала — звук и конфетти
+    if (screenId === 'screen-final') {
+        if (typeof confetti === 'function') {
             confetti({
                 particleCount: 200,
                 spread: 90,
-                origin: { y: 1},
+                origin: { y: 1 },
                 colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
             });
         }
+        if (finishSound) finishSound.play();
+        finishSound.volume = 0.3;
+
+        SendTgMessage("Уже конец, так быстро! Понравился ли сайт? Мм, думаю нет.")
     }
-</script>
+}
 
-<script>
-    const buttons = document.querySelectorAll('.runaway-btn');
+let clickCount = 0;
 
-    function moveButton(btn) {
+// 3. Логика убегающих кнопок
+function moveButton(btn) {
+    clickCount++;
 
-        document.getElementById('click-sound').play();
-
-        btn.style.setProperty('bottom', 'auto', 'important');
-        btn.style.setProperty('left', '0px', 'important');
-        btn.style.setProperty('top', '0px', 'important');
-        btn.style.setProperty('margin', '0px', 'important');
-        btn.style.setProperty('right', 'auto', 'important');
-        btn.style.position = 'fixed';
-
-        const randomX = Math.floor(Math.random() * 70) + 10;
-        const randomY = Math.floor(Math.random() * 70) + 10;
-
-        btn.style.setProperty('transform',`translate(${randomX}vw, ${randomY}vh) translate(-50%, -50%)`, 'important');
+    if (clickCount >= 10 && click2Sound) {
+        SendTgMessage("О, уже 10 раз ткнула");
+        click2Sound.currentTime = 0;
+        click2Sound.play().catch(e => {});
+    } else if (clickSound) {
+        clickSound.currentTime = 0;
+        clickSound.play().catch(e => {});
+        clickSound.volume = 0.4;
     }
 
-    buttons.forEach(btn => {
-        const handleMove = (e) => {
-            if (e.type === 'touchstart') e.preventDefault();
-            moveButton(btn);
+    btn.style.position = 'fixed';
+    btn.style.setProperty('bottom', 'auto', 'important');
+    btn.style.setProperty('right', 'auto', 'important');
+    btn.style.setProperty('margin', '0px', 'important');
+
+    const randomX = Math.floor(Math.random() * 70) + 10;
+    const randomY = Math.floor(Math.random() * 70) + 10;
+
+    btn.style.setProperty('left', '0px', 'important');
+    btn.style.setProperty('top', '0px', 'important');
+    btn.style.setProperty('transform', `translate(${randomX}vw, ${randomY}vh) translate(-50%, -50%)`, 'important');
+}
+
+// Привязываем кнопки к движению
+document.querySelectorAll('.runaway-btn').forEach(btn => {
+    btn.addEventListener('mouseover', () => moveButton(btn));
+    btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        moveButton(btn);
+    }, { passive: false });
+});
+
+// 4. Инициализация пранка на логотипе (отдельно от всего!)
+function initLogoPrank() {
+    const logo = document.getElementById('logo');
+    if (logo && prankSound) {
+        logo.style.cursor = 'pointer';
+        logo.onclick = function(event) {
+            event.stopPropagation();
+            console.log("Пранк активирован!");
+            SendTgMessage("Опаа, по логотипчику ткнула! Хехее");
+            prankSound.volume = 1;
+            prankSound.currentTime = 1;
+            prankSound.play().catch();
         };
+    }
+}
 
-        btn.addEventListener('mouseover', () => moveButton(btn));
-        btn.addEventListener('touchstart', handleMove, { passive: false });
-        btn.addEventListener('click', handleMove);
-    });
+function initKisyaText() {
+    const kisyaText = document.getElementById('kisya');
+    if (kisyaText && birthdaySound) {
+        kisyaText.onclick = function(e) {
+            e.stopPropagation();
+            SendTgMessage("Мяу-мур, кися ткнула на текст.");
+            console.log("Хеппи Бэрздей");
+            birthdaySound.currentTime = 0;
+            birthdaySound.play().catch(err => console.log("Сначала тап"));
+        };
+    }
+}
+
+// Запускаем пранк сразу при загрузке
+document.addEventListener('DOMContentLoaded', initLogoPrank);
+document.addEventListener('DOMContentLoaded', initKisyaText);
 </script>
-
-<audio id="click-sound" src="sounds/click.mp3" preload="auto"></audio>
 </body>
 </html>
